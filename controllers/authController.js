@@ -8,5 +8,7 @@ exports.signup_get = (req, res, next) => {
 };
 
 exports.signup_post = [
-    
+    body("username")
+    body("password")
+    body("confirmPassword")
 ];
