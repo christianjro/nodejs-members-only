@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const { body, validationResult } = require("express-validator");
 
-exports.signup_get = (req, res, next) => {
+exports.signup_get = (req, res) => {
     res.render('signup', {title: 'Sign Up'})
 };
 
@@ -60,3 +60,12 @@ exports.signup_post = [
         }
     }
 ];
+
+exports.login_get = (req, res) => {
+    res.render('login')
+};
+
+exports.login_post = passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+});
