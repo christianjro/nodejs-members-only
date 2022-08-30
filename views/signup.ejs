@@ -7,10 +7,20 @@
     <title>Document</title>
 </head>
 <body>
+    <%- include('./flash-message') %> 
+    
     <h2><%= title %></h2>
-    <form>
+    <form action="/signup" method="POST">
         <label>Email:</label>
-        <input>
+        <input type="text" required="true" name="username">
+
+        <label>Password:</label>
+        <input type="password" required="true" name="password">
+
+        <label>Confirm Password:</label>
+        <input type="password" required="true" name="confirmPassword">
+
+        <button type="submit">Register</button>
     </form>
 </body>
 </html>

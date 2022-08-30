@@ -12,6 +12,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
+const connectFlash = require('connect-flash');
 
 // Connect to MongoDb
 const mongoose = require('mongoose');
@@ -40,6 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 passport.use(
@@ -81,6 +83,14 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// Connect Flash
+app.use(connectFlash());
+app.use((req, res, next) => {
+  res.locals.messages = req.flash();
+  next();
+});
 
 // Access the user object from anywhere in our application
 app.use(function(req, res, next) {

@@ -9,7 +9,7 @@ router.get('/', indexController.index);
 
 // SignUp Page
 router.get('/signup', authController.signup_get);
-router.get('/signup', authController.signup_post);
+router.post('/signup', authController.signup_post);
 
 
 
